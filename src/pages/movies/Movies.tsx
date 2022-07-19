@@ -1,4 +1,4 @@
-import { useDiscoverMovies } from '../../hooks/movies';
+import { useDiscoverMovies } from '../../hooks/services/useMovies';
 
 const Movies = () => {
   const { data } = useDiscoverMovies();
