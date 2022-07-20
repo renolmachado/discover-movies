@@ -1,15 +1,15 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Theme from './components/theme/Theme';
+import { useGenres } from './hooks/services/useGenres';
 import Movies from './pages/movies/Movies';
 
-const queryClient = new QueryClient();
-
 function App(): JSX.Element {
+  useGenres();
+
   return (
-    <QueryClientProvider client={queryClient}>
+    <>
       <Theme>
         <BrowserRouter>
           <Routes>
@@ -18,7 +18,7 @@ function App(): JSX.Element {
         </BrowserRouter>
       </Theme>
       <ReactQueryDevtools />
-    </QueryClientProvider>
+    </>
   );
 }
 
