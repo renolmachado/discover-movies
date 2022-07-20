@@ -17,6 +17,7 @@ const Theme = ({ children }: Props) => {
     colors: {
       primary: '#192AC3',
     },
+    mobileMaxWidth: MIN_DESKTOP_WIDTH
   });
   const { width } = useWindowSize();
 

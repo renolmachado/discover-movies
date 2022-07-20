@@ -4,6 +4,7 @@ interface Color {
 
 export interface ITheme {
   isMobile: boolean;
+  mobileMaxWidth: number;
   fontFamily: string;
   colors: Color;
 }
