@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { ITheme } from '../../interfaces/theme';
 import useWindowSize from '../../hooks/useWindowSize';
+import { GlobalStyle } from './styles';
 
 interface Props {
   children: React.ReactNode;
@@ -10,14 +11,25 @@ interface Props {
 const MIN_DESKTOP_WIDTH = 1024;
 
 const Theme = ({ children }: Props) => {
-  const [theme, setTheme] = useState<ITheme>({ isMobile: false });
+  const [theme, setTheme] = useState<ITheme>({
+    isMobile: false,
+    fontFamily: 'Poppins',
+    colors: {
+      primary: '#192AC3',
+    },
+  });
   const { width } = useWindowSize();
 
   useEffect(() => {
     setTheme((currentTheme) => ({ ...currentTheme, isMobile: width <= MIN_DESKTOP_WIDTH }));
   }, [width]);
 
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      {children}
+    </ThemeProvider>
+  );
 };
 
 export default Theme;
