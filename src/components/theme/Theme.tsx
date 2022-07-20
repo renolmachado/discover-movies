@@ -16,6 +16,7 @@ const Theme = ({ children }: Props) => {
     fontFamily: 'Poppins',
     colors: {
       primary: '#192AC3',
+      container: '#151515'
     },
     mobileMaxWidth: MIN_DESKTOP_WIDTH
   });
