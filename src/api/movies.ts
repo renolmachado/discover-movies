@@ -11,3 +11,12 @@ export const discoverMoviesAsync = async (): Promise<IPagination<Movie>> => {
 
   return movies;
 };
+
+export const getMovieByIdAsync = async (movieId: number): Promise<Movie> => {
+  const path = getFullPath('movie/' + movieId);
+  const { data } = await axios.get(path);
+  const movie = convertKeysToCamelCase<Movie>(data);
+  movie.genreIds = movie.genres?.map(genre => genre.id);
+
+  return movie;
+};
