@@ -9,11 +9,11 @@ interface Props {
 }
 
 export const Container = styled.div`
-  padding: 75px 174px 0 143px;
+  padding: 75px 174px 0 150px;
   display: flex;
   flex-direction: column;
   height: 495px;
-  width: calc(100% - 174px - 143px);
+  width: calc(100% - 174px - 150px);
   background: ${(props: Props) => {
     const url = CONFIG.baseImageUrl + props.movie.backdropPath;
     return `linear-gradient(90deg, #070707 13.01%, rgba(0, 0, 0, 0.69) 75.59%), url(${url}) no-repeat`;
