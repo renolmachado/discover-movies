@@ -1,7 +1,7 @@
 import { ContainerPlaceholder } from './styles';
 
 const MovieBannerPlaceholder = (): JSX.Element => {
-  return <ContainerPlaceholder></ContainerPlaceholder>;
+  return <ContainerPlaceholder />;
 };
 
 export default MovieBannerPlaceholder;
