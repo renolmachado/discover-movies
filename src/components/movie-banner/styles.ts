@@ -8,20 +8,15 @@ interface Props {
   movie: Movie;
 }
 
-export const Container = styled.div`
+export const ContainerPlaceholder = styled.div`
   padding: 75px 174px 0 150px;
   display: flex;
   flex-direction: column;
   height: 495px;
   width: calc(100% - 174px - 150px);
-  background: ${(props: Props) => {
-    const url = CONFIG.baseImageUrl + props.movie.backdropPath;
-    return `linear-gradient(90deg, #070707 13.01%, rgba(0, 0, 0, 0.69) 75.59%), url(${url}) no-repeat`;
-  }};
-  background-position: center;
-  background-size: cover;
+  background: linear-gradient(90deg, #070707 13.01%, rgba(0, 0, 0, 0.69) 75.59%);
 
-  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+  @media (max-width: ${({ theme }: Pick<Props, 'theme'>) => theme.mobileMaxWidth}px) {
     padding: 106px 41px 20px 41px;
     width: calc(100% - 41px - 41px);
     height: initial;
@@ -31,10 +26,19 @@ export const Container = styled.div`
   }
 `;
 
+export const Container = styled(ContainerPlaceholder)`
+  background: ${(props: Props) => {
+    const url = CONFIG.baseImageUrl + props.movie.backdropPath;
+    return `linear-gradient(90deg, #070707 13.01%, rgba(0, 0, 0, 0.69) 75.59%), url(${url}) no-repeat`;
+  }};
+  background-position: center;
+  background-size: cover;
+`;
+
 export const SpanContainer = styled.div`
   display: flex;
   flex-direction: row;
-  
+
   @media (max-width: ${({ theme }: Partial<Props>) => theme?.mobileMaxWidth}px) {
     margin-top: 28px;
   }
