@@ -8,10 +8,15 @@ export const discoverMoviesAsync = async (withGenres: string, rating?: number): 
   let path = getFullPath('discover/movie');
   path = withGenres ? path + '&with_genres=' + withGenres : path;
   path = rating ? path + '&vote_average.lte=' + rating + '&vote_average.gte=' + (rating - 2) : path;
-  const { data } = await axios.get(path);
-  const movies = convertKeysToCamelCase<IPagination<Movie>>(data);
 
-  return movies;
+  return await onGetMoviesAsync(path);
+};
+
+export const searchMoviesAsync = async (search: string): Promise<IPagination<Movie>> => {
+  let path = getFullPath('search/movie');
+  path = search ? path + '&query=' + search : path;
+
+  return await onGetMoviesAsync(path);
 };
 
 export const getMovieByIdAsync = async (movieId: number): Promise<Movie> => {
@@ -21,4 +26,11 @@ export const getMovieByIdAsync = async (movieId: number): Promise<Movie> => {
   movie.genreIds = movie.genres?.map((genre) => genre.id);
 
   return movie;
+};
+
+const onGetMoviesAsync = async (path: string): Promise<IPagination<Movie>> => {
+  const { data } = await axios.get(path);
+  const movies = convertKeysToCamelCase<IPagination<Movie>>(data);
+
+  return movies;
 };

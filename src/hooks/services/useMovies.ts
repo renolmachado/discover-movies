@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { discoverMoviesAsync, getMovieByIdAsync } from '../../api/movies';
+import { discoverMoviesAsync, getMovieByIdAsync, searchMoviesAsync } from '../../api/movies';
 import { RootState } from '../../store/store';
 
-export const useDiscoverMovies = () => {
+export const useDiscoverMovies = (isEnabled: boolean) => {
   const filters = useSelector((state: RootState) => state.filter);
   const withGenres = useMemo(() => {
     return Object.keys(filters.selectedGenres).reduce((result, genreId) => {
@@ -17,7 +17,15 @@ export const useDiscoverMovies = () => {
     }, '');
   }, [filters]);
 
-  return useQuery(['movies', withGenres, 'rating' + filters.rating], () => discoverMoviesAsync(withGenres, filters.rating));
+  return useQuery(['movies', withGenres, 'rating' + filters.rating], () => discoverMoviesAsync(withGenres, filters.rating), {
+    enabled: isEnabled,
+  });
+};
+
+export const useSearchMovies = (search: string) => {
+  return useQuery(['movies', 'search', search], () => searchMoviesAsync(search), {
+    enabled: !!search,
+  });
 };
 
 export const useGetMovieById = (movieId: number) => {
