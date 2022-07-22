@@ -1,6 +1,10 @@
 import { StyledTitle } from './styles';
 
-const Title = (title: string) => {
+interface Props {
+  title: string;
+}
+
+const Title = ({ title }: Props) => {
   return <StyledTitle>{title}</StyledTitle>;
 };
 

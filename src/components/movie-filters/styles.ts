@@ -9,7 +9,7 @@ interface Props {
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 397px;
+  min-width: 397px;
   margin-right: 40px;
 
   @media (max-width: ${({ theme }: Pick<Props, 'theme'>) => theme.mobileMaxWidth}px) {
