@@ -8,7 +8,9 @@ interface Props {
 
 export const Placeholder = styled.div`
   width: 229px;
+  min-width: 229px;
   height: 321px;
+  min-height: 321px;
   border-radius: 20px;
   display: flex;
   justify-content: center;

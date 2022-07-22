@@ -123,6 +123,7 @@ export const AddToList = styled(Button)`
   border: 1px solid rgba(255, 255, 255, 0.16);
   filter: drop-shadow(0px 7px 42px rgba(0, 15, 147, 0.44));
   background-color: transparent;
+  stroke: #FFFFFF;
 
   &:hover {
     background-color: ${(props: { theme: ITheme }) => props.theme.colors.primary};
