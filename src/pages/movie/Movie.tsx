@@ -27,7 +27,7 @@ const Movie = () => {
         </Status>
       ) : (
         <>
-          <MovieBanner isPosterVisible movie={movie} />
+          <MovieBanner isPosterVisible isOverviewVisible movie={movie} />
           <Container>
             <RelatedMovies movieId={movie.id} />
             <BestRatedMovies />

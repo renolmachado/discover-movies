@@ -12,7 +12,7 @@ const MoviesCardList = ({ movies, title }: Props) => {
   return movies?.length ? (
     <>
       <TitleWrapper>
-        <Title title={title} />
+        <Title title={title} mobileFontSize={24}/>
       </TitleWrapper>
       <MovieList>
         {movies?.map((movie) => (

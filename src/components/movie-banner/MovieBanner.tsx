@@ -12,15 +12,16 @@ import { AddToList, ButtonsContainer, Container, Content, MovieDescription, Movi
 interface MovieBannerProps {
   movie?: Movie;
   isPosterVisible?: boolean;
+  isOverviewVisible?: boolean;
 }
 
-const MovieBanner = ({ movie, isPosterVisible }: MovieBannerProps): JSX.Element => {
+const MovieBanner = ({ movie, isPosterVisible, isOverviewVisible }: MovieBannerProps): JSX.Element => {
   const theme = useTheme() as ITheme;
-  const isOverviewVisible = !theme.isMobile;
+  const showOverview = !theme.isMobile || isOverviewVisible;
   const { addMovieToMyList, isAlreadyAddedIntoMyList } = useMyList();
 
   return movie ? (
-    <Container movie={movie}>
+    <Container movie={movie} isPosterVisible={isPosterVisible}>
       {isPosterVisible && (
         <PosterWrapper>
           <MoviePoster movie={movie} />
@@ -30,7 +31,7 @@ const MovieBanner = ({ movie, isPosterVisible }: MovieBannerProps): JSX.Element 
         {!theme.isMobile && <MovieInfo movie={movie} />}
         <MovieTitle>{movie.originalTitle}</MovieTitle>
         {theme.isMobile && <MovieInfo movie={movie} />}
-        {isOverviewVisible && <MovieDescription>{movie.overview}</MovieDescription>}
+        {showOverview && <MovieDescription>{movie.overview}</MovieDescription>}
         <ButtonsContainer>
           <WatchNow>
             Watch Now <PlayIcon />

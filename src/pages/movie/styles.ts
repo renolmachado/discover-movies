@@ -7,7 +7,7 @@ interface Props {
 
 export const Status = styled.span`
   font-size: 39px;
-  color: ${({ theme }: Props) => theme.colors.texts.primary };
+  color: ${({ theme }: Props) => theme.colors.texts.primary};
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -29,10 +29,10 @@ export const HomeButton = styled.div`
 `;
 
 export const MoviePage = styled.div`
-  background-color: ${({ theme }: Props) => theme.colors.background };
+  background-color: ${({ theme }: Props) => theme.colors.background};
   min-height: 100vh;
-  min-width: 100%;
-`
+  width: 100vw;
+`;
 
 export const Container = styled.div`
   padding-left: 150px;
@@ -40,16 +40,34 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 150px);
-`
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    padding: 67px 32px 46px 32px;
+    width: calc(100% - 32px - 32px);
+  }
+`;
 
 export const MoviesList = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 100%;
   justify-content: flex-start;
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    justify-content: center;
+  }
 `;
 
 export const MovieCardWrapper = styled.div`
   margin-right: 104px;
   margin-top: 45px;
+  
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    margin-top: 104px;
+    margin-right: initial;
+
+    &:first-child {
+      margin-top: 45px;
+    }
+  }
 `;

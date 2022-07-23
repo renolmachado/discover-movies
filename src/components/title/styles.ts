@@ -3,6 +3,7 @@ import { ITheme } from '../../interfaces/theme';
 
 interface Props {
   theme: ITheme;
+  mobileFontSize: number;
 }
 
 export const StyledTitle = styled.span`
@@ -10,4 +11,8 @@ export const StyledTitle = styled.span`
   font-size: 24px;
   line-height: 36px;
   color: ${({ theme }: Props) => theme.colors.texts.primary};
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    font-size: ${({ mobileFontSize }: Props) => mobileFontSize}px;
+  }
 `;

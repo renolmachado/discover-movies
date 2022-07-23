@@ -2,10 +2,11 @@ import { StyledTitle } from './styles';
 
 interface Props {
   title: string;
+  mobileFontSize?: number;
 }
 
-const Title = ({ title }: Props) => {
-  return <StyledTitle>{title}</StyledTitle>;
+const Title = ({ title, mobileFontSize }: Props) => {
+  return <StyledTitle mobileFontSize={mobileFontSize || 35}>{title}</StyledTitle>;
 };
 
 export default Title;
