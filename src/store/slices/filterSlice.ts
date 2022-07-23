@@ -17,15 +17,16 @@ const filterSlice = createSlice({
   initialState,
   reducers: {
     changeRating(state, action: PayloadAction<number>) {
+      state.page = 1;
       state.rating = state.rating === action.payload ? undefined : action.payload;
     },
     toggleGenre(state, action: PayloadAction<number>) {
       const genreId = action.payload;
+      state.page = 1;
       state.selectedGenres[genreId] = !state.selectedGenres[genreId];
     },
     onSearch(state, action: PayloadAction<string>) {
-      const hasToResetPage = (state.search && !action.payload) || (!state.search && action.payload);
-      if (hasToResetPage) {
+      if (state.search !== action.payload) {
         state.page = 1;
       }
 
