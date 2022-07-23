@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { changeRating } from '../../../../store/slices/filterSlice';
-import { RootState, useAppDispatch } from '../../../../store/store';
+import { changeRating } from '../../../../../../store/slices/filterSlice';
+import { RootState, useAppDispatch } from '../../../../../../store/store';
 
 interface UseRatingFilter {
   stars: number[];

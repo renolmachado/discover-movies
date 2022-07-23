@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 import MovieBanner from '../../components/movie-banner/MovieBanner';
 import MovieBannerPlaceholder from '../../components/movie-banner/MovieBannerPlaceholder';
-import MovieFilters from '../../components/movie-filters/MovieFilters';
+import MovieFilters from './components/movie-filters/MovieFilters';
 import MoviesCardList from './components/movies-card-list/MoviesCardList';
 import MyList from './components/my-list/MyList';
 import Pagination from '../../components/pagination/Pagination';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ITheme } from '../../interfaces/theme';
+import { ITheme } from '../../../../interfaces/theme';
 
 interface Props {
   isFilterVisible: boolean;

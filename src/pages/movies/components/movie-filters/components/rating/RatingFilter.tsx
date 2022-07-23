@@ -1,4 +1,4 @@
-import StarIcon from '../../../icons/StarIcon';
+import StarIcon from '../../../../../../components/icons/StarIcon';
 import { FilterContainer, FilterTitle, StarContainer, StarsContainer } from '../styles';
 import useRatingFilter from './useRatingFilter';
 

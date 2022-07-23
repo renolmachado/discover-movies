@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { useQueryClient } from '@tanstack/react-query';
-import { GENRES_KEY } from '../../../../hooks/services/useGenres';
-import { GenreMap } from '../../../../interfaces/genre-map';
-import { Genre } from '../../../../models/genre';
+import { GENRES_KEY } from '../../../../../../hooks/services/useGenres';
+import { GenreMap } from '../../../../../../interfaces/genre-map';
 import { useSelector } from 'react-redux';
-import { RootState, useAppDispatch } from '../../../../store/store';
-import { toggleGenre } from '../../../../store/slices/filterSlice';
+import { RootState, useAppDispatch } from '../../../../../../store/store';
+import { toggleGenre } from '../../../../../../store/slices/filterSlice';
+import { Genre } from '../../../../../../models/genre';
 
 interface UseGenreFilter {
   genres: Genre[];

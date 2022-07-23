@@ -1,4 +1,4 @@
-import CheckboxIcon from '../../../icons/CheckboxIcon';
+import CheckboxIcon from '../../../../../../components/icons/CheckboxIcon';
 import { CheckboxContainer, FilterContainer, FilterTitle, GenreLabel, GenresContainer } from '../styles';
 import useGenreFilter from './useGenreFilter';
 
