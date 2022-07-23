@@ -2,15 +2,14 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import MovieBanner from '../../components/movie-banner/MovieBanner';
 import MovieBannerPlaceholder from '../../components/movie-banner/MovieBannerPlaceholder';
-import MovieCard from '../../components/movie-card/MovieCard';
 import MovieFilters from '../../components/movie-filters/MovieFilters';
+import MoviesList from '../../components/movies-list/MoviesList';
 import Pagination from '../../components/pagination/Pagination';
 import Search from '../../components/search/Search';
-import Title from '../../components/title/Title';
 import { useDiscoverMovies, useSearchMovies } from '../../hooks/services/useMovies';
 import { onNext, onSearch, onPrevious } from '../../store/slices/filterSlice';
 import { RootState, useAppDispatch } from '../../store/store';
-import { Layout, MovieList, MoviesContainer, TitleWrapper } from './styles';
+import { Layout, MoviesContainer } from './styles';
 
 const Movies = () => {
   const dispatch = useAppDispatch();
@@ -45,18 +44,7 @@ const Movies = () => {
         <MovieFilters></MovieFilters>
         <MoviesContainer>
           <Search onSearch={onSearchHandler} />
-          {movies?.length && (
-            <>
-              <TitleWrapper>
-                <Title title="Discover" />
-              </TitleWrapper>
-              <MovieList>
-                {movies?.map((movie) => (
-                  <MovieCard key={movie.id} movie={movie} />
-                ))}
-              </MovieList>
-            </>
-          )}
+          <MoviesList movies={movies} title="Discover" />
           <Pagination page={queryResult.data?.page} totalPages={queryResult.data?.totalPages} onNext={onNextHandler} onPrevious={onPreviousHandler} />
         </MoviesContainer>
       </Layout>

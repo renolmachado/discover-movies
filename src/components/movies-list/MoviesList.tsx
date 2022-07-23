@@ -1,0 +1,26 @@
+import MovieCard from '../../components/movie-card/MovieCard';
+import { Movie } from '../../models/movie';
+import Title from '../title/Title';
+import { TitleWrapper, MovieList } from './styles';
+
+interface Props {
+  movies?: Movie[];
+  title: string;
+}
+
+const MoviesList = ({ movies, title }: Props) => {
+  return movies?.length ? (
+    <>
+      <TitleWrapper>
+        <Title title={title} />
+      </TitleWrapper>
+      <MovieList>
+        {movies?.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </MovieList>
+    </>
+  ) : null;
+};
+
+export default MoviesList;
