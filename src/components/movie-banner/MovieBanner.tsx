@@ -3,18 +3,19 @@ import { ITheme } from '../../interfaces/theme';
 import { Movie } from '../../models/movie';
 import PlayIcon from '../icons/PlayIcon';
 import PlusIcon from '../icons/PlusIcon';
+import MovieBannerPlaceholder from './MovieBannerPlaceholder';
 import MovieInfo from './MovieInfo';
 import { AddToList, ButtonsContainer, Container, MovieDescription, MovieTitle, WatchNow } from './styles';
 
 interface MovieBannerProps {
-  movie: Movie;
+  movie?: Movie;
 }
 
 const MovieBanner = ({ movie }: MovieBannerProps): JSX.Element => {
   const theme = useTheme() as ITheme;
   const isOverviewVisible = !theme.isMobile;
 
-  return (
+  return movie ? (
     <Container movie={movie}>
       {!theme.isMobile && <MovieInfo movie={movie} />}
       <MovieTitle>{movie.originalTitle}</MovieTitle>
@@ -29,6 +30,8 @@ const MovieBanner = ({ movie }: MovieBannerProps): JSX.Element => {
         </AddToList>
       </ButtonsContainer>
     </Container>
+  ) : (
+    <MovieBannerPlaceholder />
   );
 };
 
