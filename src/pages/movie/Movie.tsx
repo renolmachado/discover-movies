@@ -1,0 +1,33 @@
+import { useNavigate, useParams } from 'react-router-dom';
+import MovieBanner from '../../components/movie-banner/MovieBanner';
+import { useGetMovieById } from '../../hooks/services/useMovies';
+import { HomeButton, MoviePage, Status } from './styles';
+
+const Movie = () => {
+  const { id } = useParams();
+  const { data: movie, isError, isLoading } = useGetMovieById(Number(id));
+  const navigate = useNavigate();
+
+  if (isLoading) {
+    return (
+      <MoviePage>
+        <Status>Loading...</Status>;
+      </MoviePage>
+    );
+  }
+
+  return (
+    <MoviePage>
+      {isError ? (
+        <Status>
+          Movie not found
+          <HomeButton onClick={() => navigate('movies')}>Home</HomeButton>
+        </Status>
+      ) : (
+        <MovieBanner isPosterVisible movie={movie} />
+      )}
+    </MoviePage>
+  );
+};
+
+export default Movie;

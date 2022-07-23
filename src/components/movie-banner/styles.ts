@@ -11,15 +11,15 @@ interface Props {
 export const ContainerPlaceholder = styled.div`
   padding: 75px 174px 0 150px;
   display: flex;
-  flex-direction: column;
-  height: 495px;
+  flex-direction: row;
+  min-height: 495px;
   width: calc(100% - 174px - 150px);
   background: linear-gradient(90deg, #070707 13.01%, rgba(0, 0, 0, 0.69) 75.59%);
 
   @media (max-width: ${({ theme }: Pick<Props, 'theme'>) => theme.mobileMaxWidth}px) {
     padding: 106px 41px 20px 41px;
     width: calc(100% - 41px - 41px);
-    height: initial;
+    min-height: initial;
     min-height: calc(100vh - 106px - 20px);
     display: flex;
     justify-content: center;
@@ -33,7 +33,14 @@ export const Container = styled(ContainerPlaceholder)`
   }};
   background-position: center;
   background-size: cover;
+  padding-bottom: 30px;
 `;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+`
 
 export const SpanContainer = styled.div`
   display: flex;
@@ -133,3 +140,11 @@ export const AddToList = styled(Button)`
     margin-top: 16px;
   }
 `;
+
+export const PosterWrapper = styled.div`
+  width: 174px;
+  height: 240px;
+  min-width: 174px;
+  min-height: 240px;
+  margin-right: 80px;
+`

@@ -16,9 +16,10 @@ const Theme = ({ children }: Props) => {
     fontFamily: 'Poppins',
     colors: {
       primary: '#192AC3',
-      container: '#151515'
+      container: '#151515',
+      background: '#080808',
     },
-    mobileMaxWidth: MIN_DESKTOP_WIDTH
+    mobileMaxWidth: MIN_DESKTOP_WIDTH,
   });
   const { width } = useWindowSize();
 

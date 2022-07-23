@@ -7,10 +7,10 @@ interface Props {
 }
 
 export const Placeholder = styled.div`
-  width: 229px;
-  min-width: 229px;
-  height: 321px;
-  min-height: 321px;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  min-height: 100%;
   border-radius: 20px;
   display: flex;
   justify-content: center;

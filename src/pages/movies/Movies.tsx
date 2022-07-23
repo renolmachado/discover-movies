@@ -7,7 +7,7 @@ import MyList from '../../components/my-list/MyList';
 import Pagination from '../../components/pagination/Pagination';
 import Search from '../../components/search/Search';
 import { ITheme } from '../../interfaces/theme';
-import { Layout, MoviesContainer } from './styles';
+import { Layout, MoviesContainer, MoviesPage } from './styles';
 import useMovies from './useMovies';
 
 const Movies = () => {
@@ -17,7 +17,7 @@ const Movies = () => {
   const theme = useTheme() as ITheme;
 
   return (
-    <div style={{ backgroundColor: '#080808', minHeight: '100vh' }}>
+    <MoviesPage>
       {movies?.length && !isLoading ? <MovieBanner movie={randomMovie} /> : <MovieBannerPlaceholder />}
       <Layout>
         {theme.isMobile && <Search onSearch={onSearchHandler} />}
@@ -29,7 +29,7 @@ const Movies = () => {
           <Pagination page={page} totalPages={totalPages} onNext={onNextHandler} onPrevious={onPreviousHandler} />
         </MoviesContainer>
       </Layout>
-    </div>
+    </MoviesPage>
   );
 };
 

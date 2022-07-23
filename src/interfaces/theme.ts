@@ -1,6 +1,7 @@
 interface Color {
   primary: string;
   container: string;
+  background: string;
 }
 
 export interface ITheme {

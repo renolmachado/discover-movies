@@ -19,7 +19,7 @@ export const Container = styled.div`
     height: auto;
     max-height: initial;
     margin-top: 57px;
-    
+
     &:first-child {
       margin-top: 38px;
     }
@@ -90,15 +90,17 @@ export const ExpandableContainer = styled.div`
   transition: max-height 0.7s ease-in-out;
 
   &:hover {
-    ${({ theme }: Props) => !theme.isMobile && css`
-      background: #2d2d2d;
-      cursor: pointer;
-      position: absolute;
-      max-height: 100vh;
-      height: auto;
-      z-index: 2;
-      box-shadow: 0px 33px 32px rgba(0, 0, 0, 0.81);
-    `}
+    ${({ theme }: Props) =>
+      !theme.isMobile &&
+      css`
+        background: #2d2d2d;
+        cursor: pointer;
+        position: absolute;
+        max-height: 100vh;
+        height: auto;
+        z-index: 2;
+        box-shadow: 0px 33px 32px rgba(0, 0, 0, 0.81);
+      `}
 
     ${showButtonsStyles}
   }
@@ -164,4 +166,11 @@ export const AddToListButton = styled(Button)`
   & svg {
     stroke: inherit;
   }
+`;
+
+export const PosterWrapper = styled.div`
+  width: 229px;
+  min-width: 229px;
+  height: 321px;
+  min-height: 321px;
 `;

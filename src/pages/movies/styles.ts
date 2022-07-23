@@ -23,3 +23,8 @@ export const MoviesContainer = styled.div`
   flex-direction: column;
   flex: 1;
 `;
+
+export const MoviesPage = styled.div`
+  background-color: ${({ theme }: Props) => theme.colors.background };
+  min-height: 100vh;
+`

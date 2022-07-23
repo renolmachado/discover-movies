@@ -4,7 +4,7 @@ import { Placeholder, Poster } from './styles';
 
 interface Props {
   movie: Movie;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const MoviePoster = ({ movie, children }: Props) => {

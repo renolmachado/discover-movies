@@ -7,7 +7,7 @@ import useSearch from './useSearch';
 
 interface UseMyList {
   movies: Movie[];
-  addMovieToMyList: (movie: Movie) => () => void;
+  addMovieToMyList: (movie: Movie) => (event: React.MouseEvent) => void;
   isAlreadyAddedIntoMyList: (movie: Movie) => boolean;
 }
 
@@ -25,7 +25,10 @@ const useMyList = (): UseMyList => {
   );
   const dispatch = useDispatch();
   const addMovieToMyList = (movie: Movie) => {
-    return () => dispatch(addMovie(movie));
+    return (event: React.MouseEvent) => {
+      event.stopPropagation();
+      dispatch(addMovie(movie));
+    };
   };
 
   const isAlreadyAddedIntoMyList = (movie: Movie) => {
