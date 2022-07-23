@@ -1,6 +1,6 @@
 import MovieCard from '../movie-card/MovieCard';
-import { Movie } from '../../models/movie';
-import Title from '../title/Title';
+import { Movie } from '../../../../models/movie';
+import Title from '../../../../components/title/Title';
 import { TitleWrapper, MovieList } from './styles';
 
 interface Props {

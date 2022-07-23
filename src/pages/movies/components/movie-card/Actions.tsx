@@ -1,7 +1,7 @@
-import useMyList from '../../hooks/useMyList';
-import { Movie } from '../../models/movie';
-import PlayIcon from '../icons/PlayIcon';
-import PlusIcon from '../icons/PlusIcon';
+import useMyList from '../../../../hooks/useMyList';
+import { Movie } from '../../../../models/movie';
+import PlayIcon from '../../../../components/icons/PlayIcon';
+import PlusIcon from '../../../../components/icons/PlusIcon';
 import { ButtonsContainer, WatchButton, AddToListButton } from './styles';
 
 interface Props {

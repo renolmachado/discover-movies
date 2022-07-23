@@ -1,4 +1,4 @@
-import useMyList from '../../hooks/useMyList';
+import useMyList from '../../../../hooks/useMyList';
 import MoviesCardList from '../movies-card-list/MoviesCardList';
 
 const MyList = () => {
