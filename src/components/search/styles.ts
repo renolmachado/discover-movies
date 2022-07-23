@@ -4,6 +4,7 @@ export const Container = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  width: 100%
 `;
 
 export const SearchWrapper = styled.div`

@@ -11,6 +11,11 @@ export const PaginationContainer = styled.div`
   width: 100%;
   justify-content: flex-end;
   margin-top: 68px;
+  
+  @media (max-width: ${({ theme }: Pick<Props, 'theme'>) => theme.mobileMaxWidth}px) {
+    margin-top: 76px;
+    justify-content: center;
+  }
 `;
 
 export const Button = styled.div`

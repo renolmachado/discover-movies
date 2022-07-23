@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ITheme } from '../../interfaces/theme';
 
 interface Props {
@@ -12,6 +12,18 @@ export const Container = styled.div`
   position: relative;
   margin-right: 28px;
   margin-top: 35px;
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    margin-left: 14px;
+    margin-right: 14px;
+    height: auto;
+    max-height: initial;
+    margin-top: 57px;
+    
+    &:first-child {
+      margin-top: 38px;
+    }
+  }
 `;
 
 export const StarsContainer = styled.div`
@@ -47,6 +59,24 @@ export const Title = styled.span`
   margin-top: 18px;
 `;
 
+const showButtonsStyles = css`
+  ${StarsContainer} {
+    display: flex;
+    margin-top: 17px;
+    margin-bottom: 30px;
+  }
+
+  ${Title} {
+    text-overflow: initial;
+    overflow: initial;
+    white-space: initial;
+  }
+
+  ${ButtonsContainer} {
+    display: flex;
+  }
+`;
+
 export const ExpandableContainer = styled.div`
   width: inherit;
   height: inherit;
@@ -57,32 +87,27 @@ export const ExpandableContainer = styled.div`
   padding: 20px 23px;
   box-sizing: border-box;
   max-height: inherit;
-  transition: max-height .7s ease-in-out;
+  transition: max-height 0.7s ease-in-out;
 
   &:hover {
-    max-height: 100vh;
-    cursor: pointer;
-    position: absolute;
+    ${({ theme }: Props) => !theme.isMobile && css`
+      background: #2d2d2d;
+      cursor: pointer;
+      position: absolute;
+      max-height: 100vh;
+      height: auto;
+      z-index: 2;
+      box-shadow: 0px 33px 32px rgba(0, 0, 0, 0.81);
+    `}
+
+    ${showButtonsStyles}
+  }
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
     height: auto;
-    z-index: 2;
-    box-shadow: 0px 33px 32px rgba(0, 0, 0, 0.81);
-    background: #2d2d2d;
+    max-height: 100vh;
 
-    ${StarsContainer} {
-      display: flex;
-      margin-top: 17px;
-      margin-bottom: 30px;
-    }
-
-    ${Title} {
-      text-overflow: initial;
-      overflow: initial;
-      white-space: initial;
-    }
-
-    ${ButtonsContainer} {
-      display: flex;
-    }
+    ${showButtonsStyles}
   }
 `;
 
@@ -134,7 +159,7 @@ export const WatchButton = styled(Button)`
 
 export const AddToListButton = styled(Button)`
   stroke: ${(props: Props) => props.theme.colors.primary};
-  background: #FFFFFF;
+  background: #ffffff;
 
   & svg {
     stroke: inherit;

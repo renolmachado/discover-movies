@@ -16,6 +16,7 @@ export const Container = styled.div`
     min-width: initial;
     width: 100%;
     margin-right: initial;
+    margin-top: 20px;
   }
 `;
 
@@ -29,6 +30,10 @@ export const FilterBy = styled.span`
   align-items: center;
   opacity: ${({ isFilterVisible }: Props) => (isFilterVisible ? '1' : '0.4')};
   cursor: pointer;
+
+  @media (max-width: ${({ theme }: Props) => theme.mobileMaxWidth}px) {
+    font-size: 20px;
+  }
 `;
 
 export const AnimatedArrow = styled.div`
