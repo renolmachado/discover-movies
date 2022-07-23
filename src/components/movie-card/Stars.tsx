@@ -1,13 +1,16 @@
 import StarIcon from '../icons/StarIcon';
 import { StarsContainer } from './styles';
 
-const Stars = () => {
+interface Props {
+  stars: number[];
+}
+
+const Stars = ({ stars }: Props) => {
   return (
     <StarsContainer>
-      <StarIcon isFilled></StarIcon>
-      <StarIcon isFilled></StarIcon>
-      <StarIcon isFilled></StarIcon>
-      <StarIcon isFilled></StarIcon>
+      {stars.map((star) => (
+        <StarIcon key={star} isFilled></StarIcon>
+      ))}
     </StarsContainer>
   );
 };

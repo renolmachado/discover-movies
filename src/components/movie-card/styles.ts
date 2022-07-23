@@ -122,6 +122,10 @@ export const Button = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  &:hover {
+    filter: brightness(92%);
+  }
 `;
 
 export const WatchButton = styled(Button)`

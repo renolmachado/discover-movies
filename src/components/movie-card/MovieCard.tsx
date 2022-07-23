@@ -10,7 +10,7 @@ interface Props {
 }
 
 const MovieCard = ({ movie }: Props) => {
-  const { genreName, duration, releaseYear } = useMovieInfo(movie);
+  const { genreName, duration, releaseYear, stars } = useMovieInfo(movie);
 
   return (
     <Container>
@@ -23,7 +23,7 @@ const MovieCard = ({ movie }: Props) => {
           <Release>{releaseYear}</Release>
           <Duration>{duration}</Duration>
         </ReleaseDurationContainer>
-        <Stars />
+        <Stars stars={stars} />
         <Actions />
       </ExpandableContainer>
     </Container>

@@ -20,6 +20,7 @@ export const Layout = styled.div`
 export const MoviesContainer = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 export const MovieList = styled.div`

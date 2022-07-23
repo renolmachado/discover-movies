@@ -13,6 +13,7 @@ export const Container = styled.div`
   margin-right: 40px;
 
   @media (max-width: ${({ theme }: Pick<Props, 'theme'>) => theme.mobileMaxWidth}px) {
+    min-width: initial;
     width: 100%;
     margin-right: initial;
   }
@@ -22,7 +23,7 @@ export const FilterBy = styled.span`
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  color: #FFFFFF;
+  color: #ffffff;
   width: fit-content;
   display: inline-flex;
   align-items: center;
@@ -42,4 +43,3 @@ export const Collapsible = styled.div`
   overflow: hidden;
   transition: max-height 0.7s linear;
 `;
-
