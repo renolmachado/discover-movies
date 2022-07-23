@@ -18,6 +18,9 @@ const Theme = ({ children }: Props) => {
       primary: '#192AC3',
       container: '#151515',
       background: '#080808',
+      texts: {
+        primary: '#ffffff',
+      },
     },
     mobileMaxWidth: MIN_DESKTOP_WIDTH,
   });

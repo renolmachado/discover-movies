@@ -24,7 +24,7 @@ export const FilterTitle = styled.div`
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #ffffff;
+  color: ${({ theme }: Pick<Props, 'theme'>) => theme.colors.texts.primary };
 `;
 
 export const StarsContainer = styled.div`
@@ -62,7 +62,7 @@ export const GenreLabel = styled.span`
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
+  color: ${({ theme }: Pick<Props, 'theme'>) => theme.colors.texts.primary };
   margin-left: 15px;
   opacity: ${(props: Props) => (props.isSelected ? '1' : '0.5')};
 `;

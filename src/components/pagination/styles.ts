@@ -24,7 +24,7 @@ export const Button = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: ${({ theme }: Props) => theme.colors.texts.primary };
   padding: 13px 25px;
   opacity: ${(props: Props) => (props.isActive ? 1 : 0.4)};
   stroke: #ffffff;

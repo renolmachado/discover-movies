@@ -24,7 +24,7 @@ export const FilterBy = styled.span`
   font-weight: 600;
   font-size: 24px;
   line-height: 36px;
-  color: #ffffff;
+  color: ${({ theme }: Props) => theme.colors.texts.primary };
   width: fit-content;
   display: inline-flex;
   align-items: center;

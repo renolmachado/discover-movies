@@ -14,8 +14,12 @@ const MovieCard = ({ movie }: Props) => {
   const { genreName, duration, releaseYear, stars } = useMovieInfo(movie);
   const navigate = useNavigate();
 
+  const goToMovieDetails = () => {
+    navigate('./' + movie.id);
+  };
+
   return (
-    <Container onClick={() => navigate('./' + movie.id)}>
+    <Container onClick={goToMovieDetails}>
       <ExpandableContainer>
         <PosterWrapper>
           <MoviePoster movie={movie}>

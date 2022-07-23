@@ -50,7 +50,7 @@ export const Title = styled.span`
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
-  color: #ffffff;
+  color: ${({ theme }: Props) => theme.colors.texts.primary };
   text-align: center;
   max-width: 100%;
   text-overflow: ellipsis;
@@ -136,7 +136,7 @@ export const Genre = styled.span`
   padding: 7px;
   font-size: 14px;
   line-height: 21px;
-  color: #ffffff;
+  color: ${({ theme }: Props) => theme.colors.texts.primary };
   text-transform: uppercase;
   height: 21px;
 `;

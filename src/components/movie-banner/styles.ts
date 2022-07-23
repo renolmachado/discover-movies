@@ -68,7 +68,7 @@ export const MovieTitle = styled.span`
   margin-top: 26px;
   font-size: 68px;
   line-height: calc(68px + 26px);
-  color: #ffffff;
+  color: ${({ theme }: Pick<Props, 'theme'>) => theme.colors.texts.primary };
   word-break: break-word;
 
   @media (max-width: ${({ theme }: Partial<Props>) => theme?.mobileMaxWidth}px) {
@@ -93,7 +93,7 @@ const Button = styled.button`
   font-weight: 600;
   font-size: 20px;
   border-radius: 20px;
-  color: #ffffff;
+  color: ${({ theme }: Pick<Props, 'theme'>) => theme.colors.texts.primary };
   cursor: pointer;
   display: flex;
   justify-content: space-between;
