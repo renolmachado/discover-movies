@@ -11,7 +11,7 @@ interface Props {
 
 const Pagination = ({ page, totalPages, onNext, onPrevious }: Props) => {
   const isPreviousButtonActive = !!page && page > 1;
-  const isNextButtonActive = page !== totalPages;
+  const isNextButtonActive = page !== totalPages && totalPages !== 0;
 
   return (
     <PaginationContainer>
