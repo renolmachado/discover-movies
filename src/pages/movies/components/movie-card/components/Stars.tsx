@@ -1,5 +1,5 @@
-import StarIcon from '../../../../components/icons/StarIcon';
-import { StarsContainer } from './styles';
+import StarIcon from '../../../../../components/icons/StarIcon';
+import { StarsContainer } from '../styles';
 
 interface Props {
   stars: number[];

@@ -2,8 +2,8 @@ import { useNavigate } from 'react-router-dom';
 import useMovieInfo from '../../../../hooks/useMovieInfo';
 import { Movie } from '../../../../models/movie';
 import MoviePoster from '../../../../components/movie-poster/MoviePoster';
-import Actions from './Actions';
-import Stars from './Stars';
+import Actions from './components/Actions';
+import Stars from './components/Stars';
 import { Container, Duration, ExpandableContainer, Genre, PosterWrapper, Release, ReleaseDurationContainer, Title } from './styles';
 
 interface Props {
