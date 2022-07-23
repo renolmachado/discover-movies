@@ -30,6 +30,18 @@ export const getMovieByIdAsync = async (movieId: number): Promise<Movie> => {
   return movie;
 };
 
+export const getRelatedMoviesAsync = async (movieId: number): Promise<IPagination<Movie>> => {
+  const path = getFullPath('/movie/' + movieId + '/similar');
+
+  return await onGetMoviesAsync(path);
+};
+
+export const getTopRatedMoviesAsync = async (): Promise<IPagination<Movie>> => {
+  const path = getFullPath('/movie/top_rated');
+
+  return await onGetMoviesAsync(path);
+};
+
 const onGetMoviesAsync = async (path: string): Promise<IPagination<Movie>> => {
   const { data } = await axios.get(path);
   const movies = convertKeysToCamelCase<IPagination<Movie>>(data);

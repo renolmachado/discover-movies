@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { discoverMoviesAsync, getMovieByIdAsync, searchMoviesAsync } from '../../api/movies';
+import { discoverMoviesAsync, getMovieByIdAsync, getRelatedMoviesAsync, getTopRatedMoviesAsync, searchMoviesAsync } from '../../api/movies';
 import { RootState } from '../../store/store';
 
 export const useDiscoverMovies = (isEnabled: boolean, currentPage: number) => {
@@ -33,4 +33,12 @@ export const useGetMovieById = (movieId: number) => {
     staleTime: Infinity,
     cacheTime: Infinity,
   });
+};
+
+export const useGetRelatedMovies = (movieId: number) => {
+  return useQuery(['related_movies', movieId], () => getRelatedMoviesAsync(movieId));
+};
+
+export const useTopRatedMovies = () => {
+  return useQuery(['top_rated'], getTopRatedMoviesAsync);
 };

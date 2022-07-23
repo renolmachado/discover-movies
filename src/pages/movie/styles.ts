@@ -7,7 +7,7 @@ interface Props {
 
 export const Status = styled.span`
   font-size: 39px;
-  color: #ffffff;
+  color: ${({ theme }: Props) => theme.colors.texts.primary };
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -33,3 +33,23 @@ export const MoviePage = styled.div`
   min-height: 100vh;
   min-width: 100%;
 `
+
+export const Container = styled.div`
+  padding-left: 150px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 150px);
+`
+
+export const MoviesList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  justify-content: flex-start;
+`;
+
+export const MovieCardWrapper = styled.div`
+  margin-right: 104px;
+  margin-top: 45px;
+`;

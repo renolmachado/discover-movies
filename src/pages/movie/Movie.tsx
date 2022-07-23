@@ -1,7 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import MovieBanner from '../../components/movie-banner/MovieBanner';
 import { useGetMovieById } from '../../hooks/services/useMovies';
-import { HomeButton, MoviePage, Status } from './styles';
+import RelatedMovies from './components/related-titles/RelatedMovies';
+import { Container, HomeButton, MoviePage, Status } from './styles';
 
 const Movie = () => {
   const { id } = useParams();
@@ -24,7 +25,12 @@ const Movie = () => {
           <HomeButton onClick={() => navigate('movies')}>Home</HomeButton>
         </Status>
       ) : (
-        <MovieBanner isPosterVisible movie={movie} />
+        <>
+          <MovieBanner isPosterVisible movie={movie} />
+          <Container>
+            <RelatedMovies movieId={movie.id} />
+          </Container>
+        </>
       )}
     </MoviePage>
   );

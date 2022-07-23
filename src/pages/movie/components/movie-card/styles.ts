@@ -6,6 +6,7 @@ interface Props {
 }
 
 export const Container = styled.div`
+  width: 239px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
