@@ -4,19 +4,20 @@ import MovieBanner from '../../components/movie-banner/MovieBanner';
 import MovieBannerPlaceholder from '../../components/movie-banner/MovieBannerPlaceholder';
 import MovieCard from '../../components/movie-card/MovieCard';
 import MovieFilters from '../../components/movie-filters/MovieFilters';
+import Pagination from '../../components/pagination/Pagination';
 import Search from '../../components/search/Search';
 import Title from '../../components/title/Title';
 import { useDiscoverMovies, useSearchMovies } from '../../hooks/services/useMovies';
-import { onSearch } from '../../store/slices/searchSlice';
+import { onNext, onSearch, onPrevious } from '../../store/slices/filterSlice';
 import { RootState, useAppDispatch } from '../../store/store';
 import { Layout, MovieList, MoviesContainer, TitleWrapper } from './styles';
 
 const Movies = () => {
   const dispatch = useAppDispatch();
-  const { search } = useSelector((state: RootState) => state.search);
+  const { search, page } = useSelector((state: RootState) => state.filter);
   const isDiscoverMoviesEnabled = !search;
-  const discoveredMovies = useDiscoverMovies(isDiscoverMoviesEnabled);
-  const searchedMovies = useSearchMovies(search);
+  const discoveredMovies = useDiscoverMovies(isDiscoverMoviesEnabled, page);
+  const searchedMovies = useSearchMovies(search, page);
   const areMoviesBySearch = !!search;
   const queryResult = areMoviesBySearch ? searchedMovies : discoveredMovies;
   const movies = queryResult.data?.results;
@@ -26,8 +27,19 @@ const Movies = () => {
     dispatch(onSearch(toSearch));
   };
 
+  const onNextHandler = () => {
+    const totalPages = queryResult?.data?.totalPages ?? 0;
+    if (page < totalPages) {
+      dispatch(onNext());
+    }
+  };
+
+  const onPreviousHandler = () => {
+    dispatch(onPrevious());
+  };
+
   return (
-    <div style={{ backgroundColor: 'black' }}>
+    <div style={{ backgroundColor: '#080808' }}>
       {movies?.length && !queryResult.isLoading ? <MovieBanner movie={movies[randomMoviePosition]} /> : <MovieBannerPlaceholder />}
       <Layout>
         <MovieFilters></MovieFilters>
@@ -45,6 +57,7 @@ const Movies = () => {
               </MovieList>
             </>
           )}
+          <Pagination page={queryResult.data?.page} totalPages={queryResult.data?.totalPages} onNext={onNextHandler} onPrevious={onPreviousHandler} />
         </MoviesContainer>
       </Layout>
     </div>

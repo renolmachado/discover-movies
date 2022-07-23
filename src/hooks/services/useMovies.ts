@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { discoverMoviesAsync, getMovieByIdAsync, searchMoviesAsync } from '../../api/movies';
 import { RootState } from '../../store/store';
 
-export const useDiscoverMovies = (isEnabled: boolean) => {
+export const useDiscoverMovies = (isEnabled: boolean, currentPage: number) => {
   const filters = useSelector((state: RootState) => state.filter);
   const withGenres = useMemo(() => {
     return Object.keys(filters.selectedGenres).reduce((result, genreId) => {
@@ -17,13 +17,13 @@ export const useDiscoverMovies = (isEnabled: boolean) => {
     }, '');
   }, [filters]);
 
-  return useQuery(['movies', withGenres, 'rating' + filters.rating], () => discoverMoviesAsync(withGenres, filters.rating), {
+  return useQuery(['movies', withGenres, 'rating', filters.rating, 'page', currentPage], () => discoverMoviesAsync(withGenres, filters.rating, currentPage), {
     enabled: isEnabled,
   });
 };
 
-export const useSearchMovies = (search: string) => {
-  return useQuery(['movies', 'search', search], () => searchMoviesAsync(search), {
+export const useSearchMovies = (search: string, currentPage: number) => {
+  return useQuery(['movies', 'search', search, 'page', currentPage], () => searchMoviesAsync(search, currentPage), {
     enabled: !!search,
   });
 };

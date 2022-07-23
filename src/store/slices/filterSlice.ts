@@ -2,13 +2,15 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 
 interface FilterState {
+  search: string;
   rating?: number;
   selectedGenres: {
     [id: number]: boolean;
   };
+  page: number;
 }
 
-const initialState: FilterState = { selectedGenres: {} };
+const initialState: FilterState = { selectedGenres: {}, search: '', page: 1 };
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -21,8 +23,24 @@ const filterSlice = createSlice({
       const genreId = action.payload;
       state.selectedGenres[genreId] = !state.selectedGenres[genreId];
     },
+    onSearch(state, action: PayloadAction<string>) {
+      const hasToResetPage = (state.search && !action.payload) || (!state.search && action.payload);
+      if (hasToResetPage) {
+        state.page = 1;
+      }
+
+      state.search = action.payload;
+    },
+    onNext(state) {
+      state.page++;
+    },
+    onPrevious(state) {
+      if (state.page > 1) {
+        state.page--;
+      }
+    },
   },
 });
 
-export const { changeRating, toggleGenre } = filterSlice.actions;
+export const { changeRating, toggleGenre, onSearch, onNext, onPrevious } = filterSlice.actions;
 export default filterSlice.reducer;
