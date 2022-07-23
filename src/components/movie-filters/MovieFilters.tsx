@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import DownArrowIcon from '../icons/DownArrowIcon';
 import GenreFilter from './filters/genre/GenreFilter';
 import RatingFilter from './filters/rating/RatingFilter';
 import { AnimatedArrow, Collapsible, Container, FilterBy } from './styles';
+import useMovieFilters from './useMovieFilters';
 
 const MovieFilters = () => {
-  const [isFilterVisible, setIsFilterVisible] = useState(true);
-
-  const toggleFilter = () => {
-    setIsFilterVisible((current) => !current);
-  };
+  const { isFilterVisible, toggleFilter } = useMovieFilters();
 
   return (
     <Container>

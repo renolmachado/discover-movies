@@ -1,16 +1,26 @@
+import useMyList from '../../hooks/useMyList';
+import { Movie } from '../../models/movie';
 import PlayIcon from '../icons/PlayIcon';
 import PlusIcon from '../icons/PlusIcon';
 import { ButtonsContainer, WatchButton, AddToListButton } from './styles';
 
-const Actions = () => {
+interface Props {
+  movie: Movie;
+}
+
+const Actions = ({ movie }: Props) => {
+  const { addMovieToMyList, isAlreadyAddedIntoMyList } = useMyList();
+
   return (
     <ButtonsContainer>
       <WatchButton>
         <PlayIcon />
       </WatchButton>
-      <AddToListButton>
-        <PlusIcon />
-      </AddToListButton>
+      {!isAlreadyAddedIntoMyList(movie) && (
+        <AddToListButton onClick={addMovieToMyList(movie)}>
+          <PlusIcon />
+        </AddToListButton>
+      )}
     </ButtonsContainer>
   );
 };

@@ -1,4 +1,5 @@
 import { useTheme } from 'styled-components';
+import useMyList from '../../hooks/useMyList';
 import { ITheme } from '../../interfaces/theme';
 import { Movie } from '../../models/movie';
 import PlayIcon from '../icons/PlayIcon';
@@ -14,6 +15,7 @@ interface MovieBannerProps {
 const MovieBanner = ({ movie }: MovieBannerProps): JSX.Element => {
   const theme = useTheme() as ITheme;
   const isOverviewVisible = !theme.isMobile;
+  const { addMovieToMyList, isAlreadyAddedIntoMyList } = useMyList();
 
   return movie ? (
     <Container movie={movie}>
@@ -25,9 +27,11 @@ const MovieBanner = ({ movie }: MovieBannerProps): JSX.Element => {
         <WatchNow>
           Watch Now <PlayIcon />
         </WatchNow>
-        <AddToList>
-          Add to List <PlusIcon />
-        </AddToList>
+        {!isAlreadyAddedIntoMyList(movie) && (
+          <AddToList onClick={addMovieToMyList(movie)}>
+            Add to List <PlusIcon />
+          </AddToList>
+        )}
       </ButtonsContainer>
     </Container>
   ) : (

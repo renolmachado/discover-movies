@@ -4,6 +4,7 @@ import { onNext, onSearch, onPrevious } from '../../store/slices/filterSlice';
 import { RootState, useAppDispatch } from '../../store/store';
 import { useDiscoverMovies, useSearchMovies } from '../../hooks/services/useMovies';
 import { Movie } from '../../models/movie';
+import useSearch from '../../hooks/useSearch';
 
 interface UseMovies {
   randomMovie?: Movie;
@@ -26,8 +27,9 @@ interface FilterHandlers {
 
 const useMovies = (): UseMovies => {
   const dispatch = useAppDispatch();
-  const { search, page } = useSelector((state: RootState) => state.filter);
-  const isDiscoverMoviesEnabled = !search;
+  const { page } = useSelector((state: RootState) => state.filter);
+  const { search, isSearching } = useSearch();
+  const isDiscoverMoviesEnabled = !isSearching;
   const discoveredMovies = useDiscoverMovies(isDiscoverMoviesEnabled, page);
   const searchedMovies = useSearchMovies(search, page);
   const queryResult = isDiscoverMoviesEnabled ? discoveredMovies : searchedMovies;

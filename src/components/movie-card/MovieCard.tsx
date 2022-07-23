@@ -24,7 +24,7 @@ const MovieCard = ({ movie }: Props) => {
           <Duration>{duration}</Duration>
         </ReleaseDurationContainer>
         <Stars stars={stars} />
-        <Actions />
+        <Actions movie={movie} />
       </ExpandableContainer>
     </Container>
   );
