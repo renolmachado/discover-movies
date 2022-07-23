@@ -14,7 +14,7 @@ const useMovieInfo = (movie: Movie): UseMovieInfo => {
   const { data: fetchedMovie } = useGetMovieById(movie?.id);
   const genreIds = movie?.genreIds ?? [];
   const genreName = useGetGenreById(genreIds);
-  const releaseYear = movie?.releaseDate.split('-')[0];
+  const releaseYear = movie?.releaseDate?.split('-')[0] ?? '';
   const duration = timeConvert(fetchedMovie?.runtime || 0);
   const voteAverage = fetchedMovie?.voteAverage || 0;
   const starsCount = Math.ceil(voteAverage / 2);
