@@ -2,7 +2,7 @@ import { useTheme } from 'styled-components';
 import MovieBanner from '../../components/movie-banner/MovieBanner';
 import MovieBannerPlaceholder from '../../components/movie-banner/MovieBannerPlaceholder';
 import MovieFilters from '../../components/movie-filters/MovieFilters';
-import MoviesList from '../../components/movies-list/MoviesList';
+import MoviesCardList from '../../components/movies-card-list/MoviesCardList';
 import MyList from '../../components/my-list/MyList';
 import Pagination from '../../components/pagination/Pagination';
 import Search from '../../components/search/Search';
@@ -25,7 +25,7 @@ const Movies = () => {
         <MoviesContainer>
           {!theme.isMobile && <Search onSearch={onSearchHandler} />}
           <MyList />
-          <MoviesList movies={movies} title={theme.isMobile ? 'Movies' : 'Discover'} />
+          <MoviesCardList movies={movies} title={theme.isMobile ? 'Movies' : 'Discover'} />
           <Pagination page={page} totalPages={totalPages} onNext={onNextHandler} onPrevious={onPreviousHandler} />
         </MoviesContainer>
       </Layout>

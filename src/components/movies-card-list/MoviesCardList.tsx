@@ -1,4 +1,4 @@
-import MovieCard from '../../components/movie-card/MovieCard';
+import MovieCard from '../movie-card/MovieCard';
 import { Movie } from '../../models/movie';
 import Title from '../title/Title';
 import { TitleWrapper, MovieList } from './styles';
@@ -8,7 +8,7 @@ interface Props {
   title: string;
 }
 
-const MoviesList = ({ movies, title }: Props) => {
+const MoviesCardList = ({ movies, title }: Props) => {
   return movies?.length ? (
     <>
       <TitleWrapper>
@@ -23,4 +23,4 @@ const MoviesList = ({ movies, title }: Props) => {
   ) : null;
 };
 
-export default MoviesList;
+export default MoviesCardList;

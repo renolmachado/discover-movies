@@ -1,10 +1,10 @@
 import useMyList from '../../hooks/useMyList';
-import MoviesList from '../movies-list/MoviesList';
+import MoviesCardList from '../movies-card-list/MoviesCardList';
 
 const MyList = () => {
   const { movies } = useMyList();
 
-  return movies.length ? <MoviesList movies={movies} title="My List" /> : null;
+  return movies.length ? <MoviesCardList movies={movies} title="My List" /> : null;
 };
 
 export default MyList;
