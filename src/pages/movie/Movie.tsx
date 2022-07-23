@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import MovieBanner from '../../components/movie-banner/MovieBanner';
 import { useGetMovieById } from '../../hooks/services/useMovies';
+import BestRatedMovies from './components/best-rated-movies/BestRatedMovies';
 import RelatedMovies from './components/related-titles/RelatedMovies';
 import { Container, HomeButton, MoviePage, Status } from './styles';
 
@@ -29,6 +30,7 @@ const Movie = () => {
           <MovieBanner isPosterVisible movie={movie} />
           <Container>
             <RelatedMovies movieId={movie.id} />
+            <BestRatedMovies />
           </Container>
         </>
       )}

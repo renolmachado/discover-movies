@@ -37,7 +37,7 @@ export const getRelatedMoviesAsync = async (movieId: number): Promise<IPaginatio
 };
 
 export const getTopRatedMoviesAsync = async (): Promise<IPagination<Movie>> => {
-  const path = getFullPath('/movie/top_rated');
+  const path = getFullPath('movie/top_rated');
 
   return await onGetMoviesAsync(path);
 };

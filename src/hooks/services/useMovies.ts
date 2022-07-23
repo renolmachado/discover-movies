@@ -39,6 +39,6 @@ export const useGetRelatedMovies = (movieId: number) => {
   return useQuery(['related_movies', movieId], () => getRelatedMoviesAsync(movieId));
 };
 
-export const useTopRatedMovies = () => {
+export const useGetTopRatedMovies = () => {
   return useQuery(['top_rated'], getTopRatedMoviesAsync);
 };
