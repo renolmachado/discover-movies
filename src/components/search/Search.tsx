@@ -7,12 +7,12 @@ interface Props {
 }
 
 const Search = ({ onSearch }: Props) => {
-  const { onChange } = useSearch(onSearch);
+  const { onChange, isActive } = useSearch(onSearch);
 
   return (
     <Container>
-      <Input placeholder="Search..." onChange={onChange} />
-      <SearchWrapper>
+      <Input placeholder="Search..." onChange={onChange} isActive={isActive} />
+      <SearchWrapper isActive={isActive}>
         <SearchIcon />
       </SearchWrapper>
     </Container>

@@ -3,6 +3,7 @@ import { useDebounce } from '../../hooks/useDebounce';
 
 interface UseSearch {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  isActive: boolean;
 }
 
 const useSearch = (onSearch: (search: string) => void): UseSearch => {
@@ -17,7 +18,7 @@ const useSearch = (onSearch: (search: string) => void): UseSearch => {
     onSearch(debouncedSearch)
   }, [debouncedSearch, onSearch]);
 
-  return { onChange };
+  return { onChange, isActive: !!search };
 };
 
 export default useSearch;
