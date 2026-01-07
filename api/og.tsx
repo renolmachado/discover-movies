@@ -5,9 +5,10 @@ export const config = {
   runtime: 'edge',
 };
 
-export default async function handler(request: Request) {
+export default async function handler(request: Request): Promise<Response> {
   try {
-    const { searchParams } = new URL(request.url);
+    const url = new URL(request.url);
+    const { searchParams } = url;
 
     // Get dynamic title if provided, otherwise use default
     const title = searchParams.get('title') || 'Watch it!';
@@ -24,7 +25,7 @@ export default async function handler(request: Request) {
             alignItems: 'center',
             justifyContent: 'center',
             backgroundColor: '#000000',
-            backgroundImage: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
           }}
         >
           <div
@@ -43,7 +44,7 @@ export default async function handler(request: Request) {
                 fontWeight: 'bold',
                 color: '#ffffff',
                 marginBottom: 30,
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'system-ui, -apple-system, sans-serif',
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
               }}
             >
@@ -53,7 +54,7 @@ export default async function handler(request: Request) {
               style={{
                 fontSize: 40,
                 color: '#f0f0f0',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'system-ui, -apple-system, sans-serif',
                 maxWidth: 900,
                 lineHeight: 1.4,
               }}
@@ -66,7 +67,7 @@ export default async function handler(request: Request) {
                 marginTop: 50,
                 fontSize: 30,
                 color: '#ffffff',
-                fontFamily: 'Poppins, sans-serif',
+                fontFamily: 'system-ui, -apple-system, sans-serif',
                 opacity: 0.9,
               }}
             >
@@ -81,9 +82,15 @@ export default async function handler(request: Request) {
       }
     );
   } catch (e: any) {
-    console.log(`${e.message}`);
-    return new Response(`Failed to generate the image`, {
-      status: 500,
-    });
+    console.error('Error generating OG image:', e);
+    return new Response(
+      JSON.stringify({ error: 'Failed to generate the image', message: e?.message }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
 }
